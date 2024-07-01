@@ -26,4 +26,5 @@ public class VehicleDto {
     private Double vehicleTaxPerMonth;
     private Double vehicleProfit;
     private Double vehicleIncome;
+    private boolean isBroken;
 }

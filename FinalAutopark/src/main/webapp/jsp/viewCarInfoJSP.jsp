@@ -23,7 +23,7 @@
             <hr />
             <br />
             <table style="width: 100%; font-size:15px" class="center">
-                <caption>VEHICLE INFO</caption>
+                <caption>VEHICLE INFO &#128664</caption>
                 <tr>
                     <th>Type</th>
                     <th>Model</th>
@@ -68,7 +68,7 @@
             <hr />
             <br />
              <table class="center">
-                <caption>RENTS</caption>
+                <caption>RENTS &#128181</caption>
                 <tr>
                     <th>Data</th>
                     <th>Rent Cost</th>

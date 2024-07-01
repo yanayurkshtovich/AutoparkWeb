@@ -27,7 +27,7 @@
        <hr />
        <br />
        <table style="width: 90%" class="center">
-           <caption>ACCOUNTING</caption>
+           <caption>ACCOUNTING &#128213</caption>
            <tr>
                <th>Type</th>
                <th>Model</th>

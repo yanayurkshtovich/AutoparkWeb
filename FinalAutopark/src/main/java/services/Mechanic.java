@@ -20,12 +20,12 @@ public class Mechanic implements Fixer {
     EntityManager entityManager;
 
     @Override
-    public Map<String, Integer> detectBreaking(Vehicle vehicle) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public Map<String, Integer> detectBreaking(Integer vehicleID) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Map<String,Integer> breakdownsMap = new HashMap<>();
         Method getter = null;
         Object valueInField = null;
         for (Orders o: entityManager.getAll(Orders.class)) {
-            if (o.getVehicleID() == vehicle.getVehicleID()) {
+            if (Math.toIntExact(o.getVehicleID()) == vehicleID) {
                 for (Field f : o.getClass().getDeclaredFields()) {
                     getter = o.getClass().getMethod("get" + f.getName().substring(0, 1).toUpperCase() + f.getName().substring(1));
                     valueInField = getter.invoke(o);
@@ -40,18 +40,18 @@ public class Mechanic implements Fixer {
     }
 
     @Override
-    public void repair(@NotNull Vehicle vehicle) {
+    public void repair(Integer vehicleID) {
         for (Orders o : entityManager.getAll(Orders.class)) {
-            if (o.getVehicleID() == vehicle.getVehicleID()) {
+            if (Math.toIntExact(o.getVehicleID()) == vehicleID) {
                 entityManager.deleteRowByID(o.getId(), "orders");
             }
         }
     }
 
     @Override
-    public boolean isBroken(Vehicle vehicle) {
+    public boolean isBroken(Integer vehicleID) {
         for (Orders o : entityManager.getAll(Orders.class)) {
-            if (o.getVehicleID() == vehicle.getVehicleID()) {
+            if (Math.toIntExact(o.getVehicleID()) == vehicleID) {
                 return true;
             }
         }

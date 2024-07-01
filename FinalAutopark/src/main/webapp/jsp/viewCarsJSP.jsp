@@ -55,7 +55,7 @@ dtoList = dtoList.stream().filter(filter.get()).collect(Collectors.toList());
        <hr />
        <br />
        <table class="center">
-           <caption>VEHICLES</caption>
+           <caption>VEHICLES &#128663</caption>
            <tr>
                <th>Type</th>
                <th>Model</th>

@@ -47,7 +47,7 @@
                 <br />
             <%}%>
             <table class="center">
-                <caption>VEHICLE TYPES</caption>
+                <caption>VEHICLE TYPES &#128668</caption>
                 <tr>
                     <th>Type Name</th>
                     <th>Tax Coefficient</th>

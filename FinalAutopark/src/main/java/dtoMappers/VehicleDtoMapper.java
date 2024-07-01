@@ -6,6 +6,7 @@ import entityMappers.VehiclesEntityMapper;
 import exceptions.NotVehicleException;
 import infrastructure.core.annotations.Autowired;
 import lombok.NoArgsConstructor;
+import services.Mechanic;
 import utils.Constants;
 import utils.ProfitCalculationTool;
 
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 public class VehicleDtoMapper {
     @Autowired
     private VehiclesEntityMapper vehiclesEntityMapper;
+    @Autowired
+    private Mechanic mechanic;
 
     public List<VehicleDto> getVehicleDtos() throws NotVehicleException {
         return vehiclesEntityMapper.getVehiclesList().stream().map(vehicle -> {
@@ -37,6 +40,7 @@ public class VehicleDtoMapper {
                     .vehicleTaxPerMonth(ProfitCalculationTool.getCalcTaxPerMonth(vehicle))
                     .vehicleProfit(ProfitCalculationTool.getTotalProfit(vehicle))
                     .vehicleIncome(ProfitCalculationTool.getTotalIncome(vehicle))
+                    .isBroken(mechanic.isBroken(vehicle.getVehicleID()))
                     .build();
         }).collect(Collectors.toList());
     }
