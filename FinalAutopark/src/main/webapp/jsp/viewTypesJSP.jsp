@@ -3,6 +3,7 @@
 <%@page import="dtos.VehicleTypeDto" %>
 <%@page import="classes.VehicleType" %>
 <%@page import="java.util.Comparator" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +37,9 @@
                 %>
                 <div>
                     <a class="center" href="<%=descPath%>">
-                                    Descending sort</a>
+                                    &#128315</a>
                     <a class="center" href="<%=ascPath%>">
-                                    Ascending sort</a>
+                                    &#128314</a>
                     <a class="center" href="<%=clearPath%>">
                                      Reset</a>
                 </div>
