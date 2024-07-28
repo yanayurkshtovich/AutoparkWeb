@@ -1,6 +1,6 @@
 <%@ page import ="java.util.ArrayList"%>
 <%@ page import ="java.util.List"%>
-<%@page import="dtos.VehicleTypeDto" %>
+<%@page import="dto.dtos.VehicleTypeDto" %>
 <%@page import="classes.VehicleType" %>
 <%@page import="java.util.Comparator" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>

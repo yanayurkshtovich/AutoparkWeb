@@ -1,5 +1,8 @@
 package classes.engines;
 
+import lombok.Getter;
+
+@Getter
 public class AbstractCombustionEngine extends AbstractEngine{
     private double engineVolumeInCubicCm;
     private double fuelTankVolume;
@@ -12,18 +15,6 @@ public class AbstractCombustionEngine extends AbstractEngine{
         this.engineVolumeInCubicCm = engineVolumeInCubicCm;
         this.fuelTankVolume = fuelTankVolume;
         this.fuelConsumptionPerHundredKmInLiters = fuelConsumptionPerHundredKmInLiters;
-    }
-
-    public double getEngineVolumeInCubicCm() {
-        return engineVolumeInCubicCm;
-    }
-
-    public double getFuelTankVolume() {
-        return fuelTankVolume;
-    }
-
-    public double getFuelConsumptionPerHundredKmInLiters() {
-        return fuelConsumptionPerHundredKmInLiters;
     }
 
     @Override

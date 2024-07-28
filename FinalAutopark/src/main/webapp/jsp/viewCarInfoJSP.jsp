@@ -1,8 +1,8 @@
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import ="java.util.ArrayList"%>
 <%@ page import ="java.util.List"%>
-<%@page import="dtos.VehicleDto" %>
-<%@page import="dtos.RentDto" %>
+<%@page import="dto.dtos.VehicleDto" %>
+<%@page import="dto.dtos.RentDto" %>
 <%@page import="classes.VehicleType" %>
 <%@page import="java.util.Comparator" %>
 <%@page import="java.text.DecimalFormat" %>

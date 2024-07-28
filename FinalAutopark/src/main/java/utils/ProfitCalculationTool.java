@@ -2,7 +2,7 @@ package utils;
 
 import classes.Rent;
 import classes.Vehicle;
-import dtos.VehicleDto;
+import dto.dtos.VehicleDto;
 
 import java.util.List;
 

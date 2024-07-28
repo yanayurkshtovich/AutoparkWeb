@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import ="java.util.ArrayList"%>
 <%@ page import ="java.util.List"%>
-<%@page import="dtos.VehicleDto" %>
+<%@page import="dto.dtos.VehicleDto" %>
 <%@page import="classes.Vehicle" %>
 <%@page import="java.util.Comparator" %>
 <%@page import="java.util.Set" %>
@@ -50,11 +50,62 @@ dtoList = dtoList.stream().filter(filter.get()).collect(Collectors.toList());
        %>
        <br />
        <a class="center" href="/">MAIN PAGE</a>
-       <a class="center" href="/viewCars">RESET</a>
+       <a class="center" href="/viewCars">RESET FILTERS</a>
        <br />
        <br />
        <hr />
        <br />
+       <%
+           String sortKey = null;
+           String order = null;
+           if (request.getParameter("type") != null) sortKey = "type";
+           if (request.getParameter("model") != null) sortKey = "model";
+           if (request.getParameter("regIdentifier") != null) sortKey = "regIdentifier";
+           if (request.getParameter("mass") != null) sortKey = "mass";
+           if (request.getParameter("year") != null) sortKey = "year";
+           if (request.getParameter("color") != null) sortKey = "color";
+           if (request.getParameter("engine") != null) sortKey = "engine";
+           if (request.getParameter("mileage") != null) sortKey = "mileage";
+           if (request.getParameter("tank") != null) sortKey = "tank";
+           if (request.getParameter("asc") != null) order = "asc";
+           if (request.getParameter("desc") != null) order = "desc";
+      %>
+      <%if (sortKey != null) {%>
+      <%
+          String clearPath = "/viewCars";
+          String ascPath = "?" + sortKey + "&asc";
+          String descPath = "?" + sortKey + "&desc";
+      %>
+          <div>
+              <a class="center" href="<%=descPath%>">
+                              &#128315</a>
+              <a class="center" href="<%=ascPath%>">
+                              &#128314</a>
+              <a class="center" href="<%=clearPath%>">
+                               RESET SORTING</a>
+          </div>
+          <br />
+          <hr />
+          <br />
+          <%}%>
+          <p class="center"><strong>Sort by:</strong></p>
+         <br />
+         <div>
+             <% if(request.getParameter("type") == null) {%><a class="center" href="viewCars?type">Type</a><%}%>
+             <% if(request.getParameter("model") == null) {%><a class="center" href="viewCars?model">Model</a><%}%>
+             <% if(request.getParameter("regIdentifier") == null) {%><a class="center" href="viewCars?regIdentifier">Identifier</a><%}%>
+             <% if(request.getParameter("mass") == null) {%><a class="center" href="viewCars?mass">Mass</a><%}%>
+         </div>
+         <br />
+         <br />
+         <div>
+             <% if(request.getParameter("year") == null) {%><a class="center" href="viewCars?year">Year</a><%}%>
+             <% if(request.getParameter("color") == null) {%><a class="center" href="viewCars?color">Color</a><%}%>
+             <% if(request.getParameter("engine") == null) {%><a class="center" href="viewCars?engine">Engine</a><%}%>
+             <% if(request.getParameter("mileage") == null) {%><a class="center" href="viewCars?mileage">Mileage</a><%}%>
+         </div>
+         <br />
+         <br />
        <table class="center">
            <caption>VEHICLES &#128663</caption>
            <tr>
@@ -74,6 +125,37 @@ dtoList = dtoList.stream().filter(filter.get()).collect(Collectors.toList());
 No vehicles with those parameters</td></tr>
            <%}%>
            <%
+           Comparator<VehicleDto> comparator = null;
+          if (sortKey != null && sortKey.equals("type")) {
+              comparator = Comparator.comparing(vehicleDto -> vehicleDto.getType());
+          }
+          if (sortKey != null && sortKey.equals("model")) {
+              comparator = Comparator.comparing(vehicleDto -> vehicleDto.getModel());
+          }
+          if (sortKey != null && sortKey.equals("regIdentifier")) {
+              comparator = Comparator.comparing(vehicleDto -> vehicleDto.getRegistrationIdentifier());
+          }
+          if (sortKey != null && sortKey.equals("mass")) {
+              comparator = Comparator.comparingInt(vehicleDto -> vehicleDto.getMass());
+          }
+          if (sortKey != null && sortKey.equals("year")) {
+              comparator = Comparator.comparingInt(vehicleDto -> vehicleDto.getManufactureYear());
+          }
+          if (sortKey != null && sortKey.equals("color")) {
+              comparator = Comparator.comparing(vehicleDto -> vehicleDto.getColor());
+          }
+          if (sortKey != null && sortKey.equals("engine")) {
+              comparator = Comparator.comparing(vehicleDto -> vehicleDto.getEngineType());
+          }
+          if (sortKey != null && sortKey.equals("mileage")) {
+              comparator = Comparator.comparingInt(vehicleDto -> vehicleDto.getMileage());
+          }
+          if (order != null && comparator != null && order.equals("desc")) {
+              comparator = comparator.reversed();
+          }
+          if (comparator != null) {
+              dtoList.sort(comparator);
+          }
                for(VehicleDto dto : dtoList) {
            %>
            <tr>

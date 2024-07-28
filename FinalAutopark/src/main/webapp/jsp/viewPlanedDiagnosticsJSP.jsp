@@ -10,6 +10,7 @@
 <%@page import="classes.Vehicle" %>
 <%@page import="java.util.Comparator" %>
 <%@page import="dto.dtos.OrderDto" %>
+<%@page import="java.lang.Integer" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
        <%
        List<VehicleDto> dtoList = (List<VehicleDto>) request.getAttribute("cars");
        List<VehicleDto> dtoAfterRepairmentList = (List<VehicleDto>) request.getAttribute("carsAfterRepairment");
+       Integer lastDiagnosticsTime = (Integer) request.getAttribute("lastDiagnosticsTime");
        %>
        <br />
        <a class="center" href="/">MAIN PAGE</a>
@@ -30,8 +32,10 @@
        <br />
        <hr />
        <br />
+       <p>Diagnostics period is 5 min</p>
+       <p>The last one was <%=lastDiagnosticsTime / 60%> min ago </p>
        <table class="center">
-            <caption>VEHICLES AFTER DIAGNOSTICS &#128296</caption>
+            <caption>VEHICLES AFTER LAST DIAGNOSTICS &#128296</caption>
             <tr>
                 <th>Type</th>
                <th>Model</th>

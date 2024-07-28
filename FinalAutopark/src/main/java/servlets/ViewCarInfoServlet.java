@@ -1,14 +1,13 @@
 package servlets;
 
-import classes.Rent;
-import dtoMappers.RentDtoMapper;
-import dtoMappers.VehicleDtoMapper;
-import dtos.RentDto;
+import dto.RentDtoMapper;
+import dto.VehicleDtoMapper;
+import dto.dtos.RentDto;
 import exceptions.NotVehicleException;
 import infrastructure.core.impl.ApplicationContext;
 import infrastructure.core.impl.Context;
-import infrastructure.dto.EntityManager;
-import infrastructure.dto.impl.EntityManagerImpl;
+import infrastructure.databaseServices.EntityManager;
+import infrastructure.databaseServices.impl.EntityManagerImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

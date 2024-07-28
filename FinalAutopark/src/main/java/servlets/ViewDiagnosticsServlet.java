@@ -1,14 +1,12 @@
 package servlets;
 
-import dtoMappers.OrderDtoMapper;
-import dtoMappers.VehicleDtoMapper;
-import dtos.OrderDto;
-import dtos.VehicleDto;
+import dto.VehicleDtoMapper;
+import dto.dtos.VehicleDto;
 import exceptions.NotVehicleException;
 import infrastructure.core.impl.ApplicationContext;
 import infrastructure.core.impl.Context;
-import infrastructure.dto.EntityManager;
-import infrastructure.dto.impl.EntityManagerImpl;
+import infrastructure.databaseServices.EntityManager;
+import infrastructure.databaseServices.impl.EntityManagerImpl;
 import services.Mechanic;
 
 import javax.servlet.RequestDispatcher;
@@ -18,9 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet("/viewDiagnostics")
@@ -48,6 +44,8 @@ public class ViewDiagnosticsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            Object[] vehicles_id = vehicleDtoMapper.getVehicleDtos().stream().map(VehicleDto::getId).toArray();
+            mechanic.breakRandomVehicles(vehicles_id);
             req.setAttribute("cars", vehicleDtoMapper.getVehicleDtos());
             for (VehicleDto dto : vehicleDtoMapper.getVehicleDtos()) {
                 mechanic.repair(dto.getId());

@@ -38,8 +38,8 @@
         <br />
         <br />
         <div class="center">
-            <a class="center" href="/viewPlannedDiagnostics">
-                                                 PLANNED DIAGNOSTICS </a>
+            <a class="center" href="/viewPlanedDiagnostics">
+                                                 PLANED DIAGNOSTICS </a>
         </div>
     </body>
 </html>

@@ -1,12 +1,11 @@
 package servlets;
 
-import dtoMappers.VehicleTypeDtoMapper;
+import dto.VehicleTypeDtoMapper;
 import exceptions.NotVehicleException;
-import infrastructure.core.annotations.Autowired;
 import infrastructure.core.impl.ApplicationContext;
 import infrastructure.core.impl.Context;
-import infrastructure.dto.EntityManager;
-import infrastructure.dto.impl.EntityManagerImpl;
+import infrastructure.databaseServices.EntityManager;
+import infrastructure.databaseServices.impl.EntityManagerImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
