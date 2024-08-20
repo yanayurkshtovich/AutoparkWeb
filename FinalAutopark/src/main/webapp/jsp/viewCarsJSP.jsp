@@ -43,7 +43,7 @@ Optional.ofNullable(request.getParameter("engine")).filter(s -> !s.isEmpty()).if
 Optional.ofNullable(request.getParameter("mass")).filter(s -> !s.isEmpty()).ifPresent(s -> {
    filter.set(filter.get().and(vehicleDto -> String.valueOf(vehicleDto.getMass()).equals(s)));
 });
-Optional.ofNullable(request.getParameter("manufacture")).filter(s -> !s.isEmpty()).ifPresent(s -> {
+Optional.ofNullable(request.getParameter("year")).filter(s -> !s.isEmpty()).ifPresent(s -> {
    filter.set(filter.get().and(vehicleDto -> String.valueOf(vehicleDto.getManufactureYear()).equals(s)));
 });
 dtoList = dtoList.stream().filter(filter.get()).collect(Collectors.toList());
@@ -179,7 +179,7 @@ No vehicles with those parameters</td></tr>
            <form method="get" action="/viewCars" class="flex">
                    <p class="center">Type</p>
                    <br />
-                   <select  class="select" style="width: 300px" name="type" >
+                   <select  class="select" style="width: 300px" name="typeFilter" >
                        <option value="" <%=request.getParameter("type")==null?"selected":""%>>Not chosen</option>
                        <%for (String s : uniqueTypes) {%>
                        <option value="<%=s%>" <%=(request.getParameter("type")!=null && s.equals(request.getParameter("type"))?"selected":"")%>><%=s%></option>
@@ -187,7 +187,7 @@ No vehicles with those parameters</td></tr>
                    </select>
                    <p class="center">Model</p>
                    <br />
-                   <select class="select" style="width: 300px" name="model" >
+                   <select class="select" style="width: 300px" name="modelFilter" >
                        <option value="" <%=request.getParameter("model")==null?"selected":""%>>Not chosen</option>
                        <%for (String s : uniqueModels) {%>
                        <option value="<%=s%>" <%=(request.getParameter("model")!=null && s.equals(request.getParameter("model"))?"selected":"")%>><%=s%></option>
@@ -195,7 +195,7 @@ No vehicles with those parameters</td></tr>
                    </select>
                    <p class="center">Engine</p>
                    <br />
-                   <select class="select" style="width: 300px" name="engine" >
+                   <select class="select" style="width: 300px" name="engineFilter" >
                        <option value="" <%=request.getParameter("engine")==null?"selected":""%>>Not chosen</option>
                        <%for (String s : uniqueEngineTypes) {%>
                        <option value="<%=s%>" <%=(request.getParameter("engine")!=null && s.equals(request.getParameter("engine"))?"selected":"")%>><%=s%></option>
@@ -203,7 +203,7 @@ No vehicles with those parameters</td></tr>
                    </select>
                    <p class="center">Color</p>
                    <br />
-                   <select class="select" style="width: 300px" name="color" >
+                   <select class="select" style="width: 300px" name="colorFilter" >
                        <option value="" <%=request.getParameter("color")==null?"selected":""%>>Not chosen</option>
                        <%for (String s : uniqueColors) {%>
                        <option value="<%=s%>" <%=(request.getParameter("color")!=null && s.equals(request.getParameter("color"))?"selected":"")%>><%=s%></option>
@@ -211,7 +211,7 @@ No vehicles with those parameters</td></tr>
                    </select>
                   <p class="center">Mass</p>
                   <br />
-                  <select class="select" style="width: 300px" name="mass" >
+                  <select class="select" style="width: 300px" name="massFilter" >
                       <option value="" <%=request.getParameter("mass")==null?"selected":""%>>Not chosen</option>
                       <%for (String s : uniqueMass) {%>
                       <option value="<%=s%>" <%=(request.getParameter("mass")!=null && s.equals(request.getParameter("mass"))?"selected":"")%>><%=s%></option>
@@ -219,10 +219,10 @@ No vehicles with those parameters</td></tr>
                   </select>
                     <p class="center">Manufacture Year</p>
                     <br />
-                    <select class="select" style="width: 300px" name="manufacture" >
-                        <option value="" <%=request.getParameter("manufacture")==null?"selected":""%>>Not chosen</option>
+                    <select class="select" style="width: 300px" name="yearFilter" >
+                        <option value="" <%=request.getParameter("year")==null?"selected":""%>>Not chosen</option>
                         <%for (String s : uniqueManufactureYear) {%>
-                        <option value="<%=s%>" <%=(request.getParameter("manufacture")!=null && s.equals(request.getParameter("manufacture"))?"selected":"")%>><%=s%></option>
+                        <option value="<%=s%>" <%=(request.getParameter("year")!=null && s.equals(request.getParameter("year"))?"selected":"")%>><%=s%></option>
                         <%}%>
                     </select>
               <br />
